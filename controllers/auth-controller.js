@@ -60,12 +60,15 @@ const login = async (req, res) => {
 
     if (user) {
       res.status(200).json({
+        success: true,
         msg: "Login Successful",
         token: await userExist.generateToken(),
         userId: userExist._id.toString(),
       });
     } else {
-      res.status(401).json({ message: "Invalid email or password" });
+      res.status(401).json({
+        sucess: false,
+        msg: "Invalid email or password" });
     }
   } catch (error) {
     res.status(500).json("Internal server error");
