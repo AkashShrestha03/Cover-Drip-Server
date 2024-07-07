@@ -61,6 +61,7 @@ const login = async (req, res) => {
     if (user) {
       res.status(200).json({
         success: true,
+        user: User,
         msg: "Login Successful",
         token: await userExist.generateToken(),
         userId: userExist._id.toString(),
